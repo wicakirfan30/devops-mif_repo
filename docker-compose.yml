@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    image: irfandockerhub/devops-mif_images:testing
+    container_name: devops-mif
+    restart: always
+    ports:
+      - "80:80"

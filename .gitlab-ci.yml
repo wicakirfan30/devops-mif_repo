@@ -1,0 +1,15 @@
+# Define environment variables for authentication (optional)
+variables:
+  SSH_PRIVATE_KEY: ${SSH_PRIVATE_KEY}
+  SSH_KNOWN_HOSTS: ${SSH_KNOWN_HOSTS}
+stages:
+  - deploy
+
+deploy_image:
+  stage: deploy
+  script:
+    - echo "Deploying Docker image to server"
+    - ssh user@your_server_ip "docker pull irfandockerhub/devops-mif_images:testing"  # Pull the Docker image from your registry
+    - ssh user@your_server_ip "docker stop devops-mif || true"  # Stop the existing container if it exists
+    - ssh user@your_server_ip "docker rm devops-mif || true"  # Remove the existing container if it exists
+    - ssh user@your_server_ip "docker run -d --name devops-mif -p 80:80 irfandockerhub/devops-mif_images:testing"  # Run the new container

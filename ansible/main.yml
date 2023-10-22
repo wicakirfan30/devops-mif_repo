@@ -1,0 +1,12 @@
+---
+- name: Deploy Code from GitHub
+  hosts: server
+  gather_facts: no
+  tasks:
+    - name: Clone the GitHub repository
+      git:
+        repo: https://github.com/wicakirfan30/devops-mif_repo.git
+        dest: /path/to/destination/directory  # Replace with the destination directory on the target server
+        version: main  # Replace with the branch or tag you want to deploy (e.g., main, master, or a specific tag)
+        update: yes
+      become: yes

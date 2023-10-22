@@ -1,0 +1,6 @@
+
+# Docker Hub username and image name
+DOCKER_HUB_USERNAME=""
+DOCKER_HUB_PASSWORD=""
+DOCKER_IMAGE_NAME=""
+TAG=""

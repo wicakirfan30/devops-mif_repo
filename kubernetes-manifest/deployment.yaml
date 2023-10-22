@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-mif
+  namespace: devops-mif
+  labels:
+    app: devops-mif
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-mif
+  template:
+    metadata:
+      labels:
+        app: devops-mif
+    spec:
+      containers:
+      - name: devops-mif
+        image: irfandockerhub/devops-mif_images:testing
+        imagePullPolicy: Always
+        resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+        ports:
+          - containerPort: 80
+      restartPolicy: Always
